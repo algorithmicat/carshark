@@ -4,7 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ModelCarStoreRequest extends FormRequest
+/**
+ * @OA\Schema(
+ *      required={"name"},
+ *      schema="CarMarkStoreRequest",  
+ *      @OA\Property(property="name", type="string",  example="kia", description="Модель машины"),
+ * )
+ */
+class CarMarkStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +32,6 @@ class ModelCarStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|max:20',
-            'marc_id'=>'required',
         ];
     }
 }

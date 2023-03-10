@@ -24,11 +24,11 @@ class CarModelSeeder extends Seeder
      */
     public function run()
     {
-        foreach(self::$modelCars as $marc_id => $models_car){
+        foreach(self::$modelCars as $mark_id => $models_car){
             foreach ($models_car as $model) {
                 CarModel::create([
                     'name' => $model,
-                    'marc_id' => $marc_id,
+                    'car_mark_id' => $mark_id,
                 ]);
             }
         }

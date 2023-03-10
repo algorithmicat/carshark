@@ -5,29 +5,53 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CarStoreRequest;
 use App\Http\Resources\CarResource;
-use App\Jobs\ForgotCarJob;
 use App\Models\Car;
 use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
 
 class CarController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @OA\Get(
+     *     path="/api/cars",
+     *     operationId="/api/cars(GET)",
+     *     summary="Получить список машин",
+     *     tags={"Машины"}, 
+     *     description="Получение списка всех машин",  
+     *     @OA\Response(
+     *         response="200",
+     *         description="Возвращает список машин"
+     *     )
+     *  )
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        Cache::put('test', 'xxx', now()-> addMinutes(10));
+        // Cache::put('test', 'xxx', now()-> addMinutes(10));
 
-        return CarResource:: collection(Car::all());
+        return CarResource::collection(Car::all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * pppp
+    /** 
+     * Store a newly created resource in storage.  
+     * 
+     * @OA\Post(
+     *     path="/api/cars",
+     *     operationId="/api/cars(POST)",
+     *     summary="Добавить машину",
+     *     tags={"Машины"},
+     *     description="Создание машины",
+     *     @OA\RequestBody(
+     *        required=true,
+     *           @OA\JsonContent(ref="#/components/schemas/CarStoreRequest"),
+     *     ),      
+     *     @OA\Response(
+     *         response="200",
+     *         description="Создание новой машины"
+     *     ),
+     * )
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -41,7 +65,25 @@ class CarController extends Controller
 
     /**
      * Display the specified resource.
-     * ggg milashka
+     *
+     * @OA\Get(
+     *     path="/api/cars/{id}", 
+     *     operationId="/api/cars/{cars}(GET)",
+     *     summary="Получить машину",
+     *     tags={"Машины"}, 
+     *     description="Получение машины по идентификатору",
+     *     @OA\Parameter(
+     *         in="path", 
+     *         name="id",
+     *         description="Идентификатор машины",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Возвращает машину"
+     *     )
+     * )      
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -52,7 +94,29 @@ class CarController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * 
+     * @OA\Put(
+     *     path="/api/cars/{id}",
+     *     operationId="/api/cars(PUT)",
+     *     summary="Редактировать машину",
+     *     tags={"Машины"},
+     *     description="Редактирование машины по идентификатору",
+     *     @OA\Parameter(
+     *         in="path", 
+     *         name="id",
+     *         description="Идентификатор машины",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),         
+     *     @OA\RequestBody(
+     *       required=true,
+     *       @OA\JsonContent(ref="#/components/schemas/CarStoreRequest")
+     *      ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Редактирование машины",
+     *     ),
+     * )
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -67,7 +131,25 @@ class CarController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * 
+     * @OA\Delete(
+     *     path="/api/cars/{id}",     
+     *     operationId="/api/cars/{cars}(DELETE)",
+     *     summary="Удалить машину",
+     *     tags={"Машины"},         
+     *     description="Удаление машины по идентификатору",
+     *     @OA\Parameter(
+     *         in="path", 
+     *         name="id",
+     *         description="Идентификатор машины",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response="204",
+     *         description="Удаление машины"
+     *     )
+     * )
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

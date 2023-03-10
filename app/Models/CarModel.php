@@ -11,12 +11,12 @@ class CarModel extends Model
 
     protected $fillable = [
         'name',
-        'marc_id',
+        'car_mark_id',
     ];
 
-    public function carMarc()
+    public function carMark()
     {
-        return $this->belongsTo(CarMarc::class);
+        return $this->belongsTo(CarMark::class);
     }
 
     public function cars()

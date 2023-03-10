@@ -4,6 +4,15 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\Schema(
+ *      required={"date", "sum", "renter_id"},
+ *      schema="OperationStoreRequest",  
+ *      @OA\Property(property="date", type="date", example="2019-12-19", description="Дата"),
+ *      @OA\Property(property="sum", type="float", example="352.0", description="Сумма"),
+ *      @OA\Property(property="renter_id", type="integer",  example="2", description="id статуса арендатора"),
+ * )
+ */
 class OperationStoreRequest extends FormRequest
 {
     /**

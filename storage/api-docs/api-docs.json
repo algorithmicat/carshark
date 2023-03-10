@@ -1,0 +1,911 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Carshark",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/cars": {
+            "get": {
+                "tags": [
+                    "Машины"
+                ],
+                "summary": "Получить список машин",
+                "description": "Получение списка всех машин",
+                "operationId": "/api/cars(GET)",
+                "responses": {
+                    "200": {
+                        "description": "Возвращает список машин"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Машины"
+                ],
+                "summary": "Добавить машину",
+                "description": "Создание машины",
+                "operationId": "/api/cars(POST)",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CarStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Создание новой машины"
+                    }
+                }
+            }
+        },
+        "/api/cars/{id}": {
+            "get": {
+                "tags": [
+                    "Машины"
+                ],
+                "summary": "Получить машину",
+                "description": "Получение машины по идентификатору",
+                "operationId": "/api/cars/{cars}(GET)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает машину"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Машины"
+                ],
+                "summary": "Редактировать машину",
+                "description": "Редактирование машины по идентификатору",
+                "operationId": "/api/cars(PUT)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CarStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Редактирование машины"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Машины"
+                ],
+                "summary": "Удалить машину",
+                "description": "Удаление машины по идентификатору",
+                "operationId": "/api/cars/{cars}(DELETE)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Удаление машины"
+                    }
+                }
+            }
+        },
+        "/api/car_events": {
+            "get": {
+                "tags": [
+                    "События машины"
+                ],
+                "summary": "Получить список событий машин",
+                "description": "Получение списка всех событий машин",
+                "operationId": "/api/car_events(GET)",
+                "responses": {
+                    "200": {
+                        "description": "Возвращает список событий машин"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "События машины"
+                ],
+                "summary": "Добавить событие машины",
+                "description": "Создание события машины",
+                "operationId": "/api/car_events(POST)",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CarStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Создание нового события машины"
+                    }
+                }
+            }
+        },
+        "/api/car_events/{id}": {
+            "get": {
+                "tags": [
+                    "События машины"
+                ],
+                "summary": "Получить событие машины",
+                "description": "Получение события машины по идентификатору",
+                "operationId": "/api/car_events{car_events}(GET)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор события машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает событие машину"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "События машины"
+                ],
+                "summary": "Редактировать событие машины",
+                "description": "Редактирование события машины по идентификатору",
+                "operationId": "/api/car_events(PUT)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор события машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CarEventStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Редактирование события машины"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "События машины"
+                ],
+                "summary": "Удалить событие машины",
+                "description": "Удаление собятия машины по идентификатору",
+                "operationId": "/api/car_events/{car_events}(DELETE)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор события машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Удаление собятия машины"
+                    }
+                }
+            }
+        },
+        "/api/car_marks": {
+            "get": {
+                "tags": [
+                    "Марки машин"
+                ],
+                "summary": "Получить список марок машин",
+                "description": "Получение списка всех марок машин",
+                "operationId": "/api/car_marks(GET)",
+                "responses": {
+                    "200": {
+                        "description": "Возвращает список марок машин"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Марки машин"
+                ],
+                "summary": "Добавить марку машины",
+                "description": "Создание марки машины",
+                "operationId": "/api/car_marks(POST)",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CarMarkStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Создание новой марки машины"
+                    }
+                }
+            }
+        },
+        "/api/car_marks/{id}": {
+            "get": {
+                "tags": [
+                    "Марки машин"
+                ],
+                "summary": "Получить марку машины",
+                "description": "Получение марки машины по идентификатору",
+                "operationId": "/api/car_marks{car_marks}(GET)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор марки машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает марку машины"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Марки машин"
+                ],
+                "summary": "Редактировать марку машины",
+                "description": "Редактирование марки машины по идентификатору",
+                "operationId": "/api/car_marks(PUT)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор марки машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CarMarkStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Редактирование марки машины"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Марки машин"
+                ],
+                "summary": "Удалить марку машины",
+                "description": "Удаление марки машины по идентификатору",
+                "operationId": "/api/car_marks/{car_marks}(DELETE)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор марки машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Удаление марки машины"
+                    }
+                }
+            }
+        },
+        "/api/car_models": {
+            "get": {
+                "tags": [
+                    "Модели машин"
+                ],
+                "summary": "Получить список моделей машин",
+                "description": "Получение списка всех моделей машин",
+                "operationId": "/api/car_models(GET)",
+                "responses": {
+                    "200": {
+                        "description": "Возвращает список моделей машин"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Модели машин"
+                ],
+                "summary": "Добавить модель машины",
+                "description": "Создание модели машины",
+                "operationId": "/api/car_models(POST)",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CarModelStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Создание новой модели машины"
+                    }
+                }
+            }
+        },
+        "/api/car_models/{id}": {
+            "get": {
+                "tags": [
+                    "Модели машин"
+                ],
+                "summary": "Получить модель машины",
+                "description": "Получение модели машины по идентификатору",
+                "operationId": "/api/car_models{car_models}(GET)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор модели машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает модель машины"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Модели машин"
+                ],
+                "summary": "Редактировать модель машины",
+                "description": "Редактирование модели машины по идентификатору",
+                "operationId": "/api/car_models(PUT)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор модели машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CarModelStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Редактирование модели машины"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Модели машин"
+                ],
+                "summary": "Удалить модель машины",
+                "description": "Удаление модели машины по идентификатору",
+                "operationId": "/api/car_models/{car_models}(DELETE)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор модели машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Удаление модели машины"
+                    }
+                }
+            }
+        },
+        "/api/car_statuses": {
+            "get": {
+                "tags": [
+                    "Статусы машин"
+                ],
+                "summary": "Получить список статусов машин",
+                "description": "Получение списка всех статусов машин",
+                "operationId": "/api/car_statuses(GET)",
+                "responses": {
+                    "200": {
+                        "description": "Возвращает список статусов машин"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Статусы машин"
+                ],
+                "summary": "Добавить статус машины",
+                "description": "Создание статуса машины",
+                "operationId": "/api/car_statuses(POST)",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CarStatusStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Создание нового статуса машины"
+                    }
+                }
+            }
+        },
+        "/api/car_statuses/{id}": {
+            "get": {
+                "tags": [
+                    "Статусы машин"
+                ],
+                "summary": "Получить статус машины",
+                "description": "Получение статуса машины по идентификатору",
+                "operationId": "/api/car_statuses{car_statuses}(GET)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор статуса машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает статус машины"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Статусы машин"
+                ],
+                "summary": "Редактировать статус машины",
+                "description": "Редактирование статуса машины по идентификатору",
+                "operationId": "/api/car_statuses(PUT)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор статуса машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CarStatusStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Редактирование статуса машины"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Статусы машин"
+                ],
+                "summary": "Удалить событие машины",
+                "description": "Удаление статуса машины по идентификатору",
+                "operationId": "/api/car_statuses/{car_statuses}(DELETE)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор статуса машины",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Удаление статуса машины"
+                    }
+                }
+            }
+        },
+        "/api/operations": {
+            "get": {
+                "tags": [
+                    "Операции"
+                ],
+                "summary": "Получить список операций",
+                "description": "Получение списка всех операций",
+                "operationId": "/api/operations(GET)",
+                "responses": {
+                    "200": {
+                        "description": "Возвращает список операций"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Операции"
+                ],
+                "summary": "Добавить операцию",
+                "description": "Создание операции",
+                "operationId": "/api/operations(POST)",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OperationStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Создание новой операции"
+                    }
+                }
+            }
+        },
+        "/api/operations/{id}": {
+            "get": {
+                "tags": [
+                    "Операции"
+                ],
+                "summary": "Получить операцию",
+                "description": "Получение операции по идентификатору",
+                "operationId": "/api/operations/{operations}(GET)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор операции",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает операцию"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Операции"
+                ],
+                "summary": "Редактировать операцию",
+                "description": "Редактирование операции по идентификатору",
+                "operationId": "/api/operations(PUT)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор операции",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OperationStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Редактирование операции"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Операции"
+                ],
+                "summary": "Удалить операцию",
+                "description": "Удаление операции по идентификатору",
+                "operationId": "/api/operations/{operations}(DELETE)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор операции",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Удаление операции"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CarEventStoreRequest": {
+                "required": [
+                    "date",
+                    "latitude",
+                    "langitude",
+                    "fuel",
+                    "speed",
+                    "renter_id",
+                    "car_id",
+                    "car_status_id"
+                ],
+                "properties": {
+                    "date": {
+                        "description": "Дата и время события",
+                        "type": "dateTime",
+                        "example": "2016-11-08 07:05:41"
+                    },
+                    "latitude": {
+                        "description": "Широта",
+                        "type": "number",
+                        "format": "float",
+                        "example": "35.55242"
+                    },
+                    "langitude": {
+                        "description": "Долгота",
+                        "type": "number",
+                        "format": "float",
+                        "example": "23.343332"
+                    },
+                    "fuel": {
+                        "description": "Топливо",
+                        "type": "integer",
+                        "example": "23"
+                    },
+                    "speed": {
+                        "description": "Скорость",
+                        "type": "integer",
+                        "example": "44"
+                    },
+                    "renter_id": {
+                        "description": "id арендатора",
+                        "type": "integer",
+                        "example": "3"
+                    },
+                    "car_id": {
+                        "description": "id машины",
+                        "type": "integer",
+                        "example": "3"
+                    },
+                    "car_status_id": {
+                        "description": "id статуса машины",
+                        "type": "integer",
+                        "example": "3"
+                    }
+                },
+                "type": "object"
+            },
+            "CarMarkStoreRequest": {
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "Модель машины",
+                        "type": "string",
+                        "example": "kia"
+                    }
+                },
+                "type": "object"
+            },
+            "CarModelStoreRequest": {
+                "required": [
+                    "name",
+                    "car_mark_id"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "Модель машины",
+                        "type": "string",
+                        "example": "rio"
+                    },
+                    "car_mark_id": {
+                        "description": "Марка машины",
+                        "type": "integer",
+                        "example": "3"
+                    }
+                },
+                "type": "object"
+            },
+            "CarStatusStoreRequest": {
+                "required": [
+                    "car_status"
+                ],
+                "properties": {
+                    "car_status": {
+                        "description": "Статус машины",
+                        "type": "integer",
+                        "example": "2"
+                    }
+                },
+                "type": "object"
+            },
+            "CarStoreRequest": {
+                "required": [
+                    "number",
+                    "mileage",
+                    "car_statuses_id",
+                    "year_of_release",
+                    "car_model_id"
+                ],
+                "properties": {
+                    "number": {
+                        "description": "Номер машины",
+                        "type": "string",
+                        "example": "ц135вы"
+                    },
+                    "mileage": {
+                        "description": "Пробег машины",
+                        "type": "integer",
+                        "example": "352"
+                    },
+                    "car_statuses_id": {
+                        "description": "id статуса машины",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "year_of_release": {
+                        "description": "Год выпуска машины",
+                        "type": "integer",
+                        "example": "2003"
+                    },
+                    "car_model_id": {
+                        "description": "id модели",
+                        "type": "integer",
+                        "example": "3"
+                    }
+                },
+                "type": "object"
+            },
+            "OperationStoreRequest": {
+                "required": [
+                    "date",
+                    "sum",
+                    "renter_id"
+                ],
+                "properties": {
+                    "date": {
+                        "description": "Дата",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2019-12-19"
+                    },
+                    "sum": {
+                        "description": "Сумма",
+                        "type": "number",
+                        "format": "float",
+                        "example": "352.0"
+                    },
+                    "renter_id": {
+                        "description": "id статуса арендатора",
+                        "type": "integer",
+                        "example": "2"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

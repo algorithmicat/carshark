@@ -4,7 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CarStatusRequest extends FormRequest
+/**
+ * @OA\Schema(
+ *      required={"car_status"},
+ *      schema="CarStatusStoreRequest",  
+ *      @OA\Property(property="car_status", type="integer",  example="2", description="Статус машины"),
+ * )
+ */
+class CarStatusStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

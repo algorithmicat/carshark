@@ -4,7 +4,7 @@ namespace App\Jobs;
 
 use App\Http\Requests\EventStoreRequest;
 use App\Http\Resources\CarEventResource;
-use App\Models\Event;
+use App\Models\CarEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -33,7 +33,7 @@ class EventJob implements ShouldQueue
      */
     public function handle()
     {
-        Event::create($this->request); //испольщуем 
+        CarEvent::create($this->request); //испольщуем 
 
     }
 }

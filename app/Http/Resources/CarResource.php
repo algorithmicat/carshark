@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Models\CarEvent;
+use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CarResource extends JsonResource
@@ -17,9 +19,11 @@ class CarResource extends JsonResource
         return [
             'id'=>$this->id,
             'number' => $this-> number,
-            'statuses_id' => $this-> statuses_id,
-            'model_car_id' => $this-> model_car_id,
-            'events' => CarEventResource::collection($this->events), //прописываем ресурс связи с эвентом
+            'car_statuses_id' => $this-> car_statuses_id,
+            'car_model_id' => $this-> car_model_id,
+            'car_events' => CarEventResource::collection(CarEvent::all()), //прописываем ресурс связи с эвентом
+            // 'car_events' => new CarEventResource($this->resource->createdBy),
+            // 'car_events' => $this->car_events,
         ];
     }
 }

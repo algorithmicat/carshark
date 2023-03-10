@@ -17,7 +17,7 @@ class CarEvent extends Model
         'speed',
         'renter_id',
         'car_id',
-        'status_id',
+        'car_status_id',
     ];
 
     public function car()

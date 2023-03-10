@@ -16,10 +16,14 @@ class CarEventResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'date' => $this-> date,
-            'latitude' => $this-> latitude,
-            'langitude' => $this-> langitude,
-            'statuses_id' => $this->statuses_id,
+            'date'=>$this->date,
+            'latitude'=>$this->latitude,
+            'langitude'=>$this->langitude,
+            'fuel'=>$this->fuel,
+            'speed'=>$this->speed,
+            'renter_id'=>$this->renter_id,
+            'car_id'=>$this->car_id,
+            'car_status_id'=>$this->car_status_id,
         ];
     }
 }

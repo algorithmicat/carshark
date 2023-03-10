@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RenterStoreRequest;
 use App\Http\Resources\RenterResource;
-use App\Models\Renters;
-use Illuminate\Http\Request;
+use App\Models\Renter;
 use Illuminate\Http\Response;
 
 class RenterController extends Controller
@@ -18,7 +17,7 @@ class RenterController extends Controller
      */
     public function index()
     {
-        return RenterResource::collection(Renters::all());
+        return RenterResource::collection(Renter::all());
     }
 
     /**
@@ -29,7 +28,7 @@ class RenterController extends Controller
      */
     public function store(RenterStoreRequest $request)
     {
-        $created_renter = Renters::create($request->validated()); //создаем переменную, вызываем модель, метод креэйт. Потом: вместо all, валидированные
+        $created_renter = Renter::create($request->validated()); //создаем переменную, вызываем модель, метод креэйт. Потом: вместо all, валидированные
 
         return new RenterResource($created_renter);
     }
@@ -40,7 +39,7 @@ class RenterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Renters $renter)
+    public function show(Renter $renter)
     {
         return new RenterResource($renter);
     }
@@ -52,7 +51,7 @@ class RenterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RenterStoreRequest $request, Renters $renter)
+    public function update(RenterStoreRequest $request, Renter $renter)
     {
         $renter->update($request->validated());
 
@@ -65,7 +64,7 @@ class RenterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Renters $renter)
+    public function destroy(Renter $renter)
     {
         $renter->delete();
 

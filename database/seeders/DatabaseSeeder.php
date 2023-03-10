@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(CarMarcSeeder::class);
+        $this->call(CarMarkSeeder::class);
         $this->call(CarModelSeeder::class);
         $this->call(CarStatusSeeder::class);
         Car::factory()->count(5)->create();

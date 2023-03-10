@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('car_models', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('marc_id');
+            $table->foreignId('car_mark_id');
             $table->timestamps();
         });
     }

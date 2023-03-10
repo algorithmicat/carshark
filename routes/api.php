@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CarController;
+use App\Http\Controllers\Api\CarEventController;
+use App\Http\Controllers\Api\CarMarkController;
+use App\Http\Controllers\Api\CarModelController;
 use App\Http\Controllers\Api\CarStatusController;
 use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\MarcController;
@@ -35,9 +38,9 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 Route::apiResources([
     'cars' => CarController::class,
     'car_statuses' => CarStatusController::class,
-    'events' => EventController::class,
-    'marcs' => MarcController::class,
-    'models_car' => ModelCarController::class,
+    'car_events' => CarEventController::class,
+    'car_marks' => CarMarkController::class,
+    'car_models' => CarModelController::class,
     'operations' => OperationController::class,
     'renters' => RenterController::class,
     'user_statuses' => UserStatusController::class,

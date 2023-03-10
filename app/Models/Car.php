@@ -12,9 +12,9 @@ class Car extends Model
     protected $fillable = [
         'number',
         'mileage',
-        'statuses_id',
+        'car_statuses_id',
         'year_of_release',
-        'model_car_id',
+        'car_model_id',
     ];
 
     public function carEvents()
