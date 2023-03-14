@@ -5,26 +5,26 @@
          colors="true"
 >
     <testsuites>
-        <testsuite name="Unit">
+        <testsuite name="Unit"> <!--группирует модульные тесты в виде набора тестов-->
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
         <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+            <directory suffix="Test.php">./tests/Feature</directory>  <!--только те файлы, которые оканчиваются на Test.php-->
         </testsuite>
     </testsuites>
-    <coverage processUncoveredFiles="true">
+    <coverage processUncoveredFiles="true"> <!--покрытие кода-->
         <include>
             <directory suffix=".php">./app</directory>
         </include>
     </coverage>
-    <php>
+    <php> <!--переменные-->
         <env name="APP_ENV" value="testing"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="DB_DATABASE" value="testing"/>
-        <env name="MAIL_MAILER" value="array"/>
+        <env name="CACHE_DRIVER" value="array"/> <!--массив для кэша чтобы данные не сохранялись-->
+        <!-- <env name="DB_DATABASE" value="testing"/> -->
+        <env name="MAIL_MAILER" value="array"/> <!--массив чтобы данные не сохранялись-->
         <env name="QUEUE_CONNECTION" value="sync"/>
-        <env name="SESSION_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/> <!--массив для сессий чтобы данные не сохранялись-->
         <env name="TELESCOPE_ENABLED" value="false"/>
     </php>
 </phpunit>

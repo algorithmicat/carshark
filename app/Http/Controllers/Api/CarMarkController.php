@@ -7,6 +7,7 @@ use App\Http\Requests\CarMarkStoreRequest;
 use App\Http\Resources\CarMarkResource;
 use App\Models\CarMark;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cache;
 
 class CarMarkController extends Controller
 {
@@ -28,7 +29,10 @@ class CarMarkController extends Controller
      */
     public function index()
     {
-        return CarMarkResource::collection(CarMark::all());
+        return CarMarkResource::collection(CarMark::paginate(5));
+        $cacheCarMarks = CarMarkResource::collection(CarMark::paginate(3));
+        Cache::put('cacheCarMarcks', $cacheCarMarks, now()-> addMinutes(10));
+        return $cacheCarMarks;
     }
 
     /**

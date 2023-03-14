@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CarStoreRequest;
 use App\Http\Resources\CarResource;
 use App\Models\Car;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Support\Facades\Cache;
 
@@ -29,9 +30,9 @@ class CarController extends Controller
      */
     public function index()
     {
-        // Cache::put('test', 'xxx', now()-> addMinutes(10));
-
-        return CarResource::collection(Car::all());
+        $cacheCars = CarResource::collection(Car::paginate(3));
+        Cache::put('cacheCars', $cacheCars, now()-> addMinutes(10));
+        return $cacheCars;
     }
 
     /** 
@@ -89,7 +90,10 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        return new CarResource($car);
+        $cacheCar = new CarResource($car);
+        Cache::put('cacheCar', $cacheCar, now()-> addMinutes(10));
+        return $cacheCar;
+
     }
 
     /**
@@ -160,3 +164,5 @@ class CarController extends Controller
         return response(null, HttpResponse::HTTP_NO_CONTENT);
     }
 }
+
+

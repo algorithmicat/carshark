@@ -8,6 +8,7 @@ use App\Http\Requests\CarStatusRequest;
 use App\Http\Requests\CarStatusStoreRequest;
 use App\Http\Resources\CarStatusResource;
 use App\Models\CarStatus;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class CarStatusController extends Controller
@@ -31,7 +32,7 @@ class CarStatusController extends Controller
     public function index()
     {
         //  return status::all(); //показать всё
-       return CarStatusResource::collection(CarStatus::all()); // получить всё с помощью ресурса, с использованием статичного метода коллектион
+       return CarStatusResource::collection(CarStatus::paginate(2)); // получить всё с помощью ресурса, с использованием статичного метода коллектион
     }
 
     /**
